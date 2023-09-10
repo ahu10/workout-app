@@ -8,3 +8,9 @@ This was originally designed to be a workout application that helps track workou
 which recreates the exercise list with checkboxes. 
 
 The frontend was done using react, the backend was done using nodejs and express, and the database was done using mongodo atlas. 
+
+In order to test the functionality of this app, clone the repository. node.js, react, react-router-dom, cors, and express should be installed.
+Open a terminal, navigate to the app folder and start using "npm start"
+Open a separate terminal, navigate to the server folder, and start the server using "node server.mjs"
+
+The website runs on "http://localhost:3300

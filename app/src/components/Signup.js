@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../styles/Login.css';
 
 export default function Login() {
   const navigate = useNavigate()
@@ -48,8 +49,10 @@ export default function Login() {
   }
 
   return (
-    <div>
+    <div id="container">
+      <div id="form-box">
         <form className="Login" onSubmit={handleSubmit}>
+          <div className="input-group">
             <label>Email </label>
             <input 
                 type="text"
@@ -57,7 +60,8 @@ export default function Login() {
                 value={login.username}
                 required
                 onChange={handleChange} />
-            
+          </div>
+          <div className="input-group">
             <label>Password </label>
             <input 
                 type="password"
@@ -65,7 +69,8 @@ export default function Login() {
                 value={login.password}
                 required
                 onChange={handleChange} />
-
+          </div>
+          <div className="input-group">
             <label>Confirm Password </label>
             <input 
                 type="password"
@@ -73,10 +78,11 @@ export default function Login() {
                 value={login.confirm}
                 required
                 onChange={handleChange} />
-            
-            <button type="submit" value="Submit">Submit</button>
+          </div>
+            <button class="login-button" type="submit" value="Submit">Submit</button>
         </form>
-    <input type="button" value="Login Page" onClick={loginPage}/>
+        <input class="html-button" type="button" value="Login Page" onClick={loginPage}/>
+      </div>
     </div>
   );
 }

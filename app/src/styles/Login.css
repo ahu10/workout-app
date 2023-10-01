@@ -1,0 +1,66 @@
+#container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    margin: 0 auto;
+}
+
+.html-button {
+    background: none; /* Remove the background color */
+    border: none; /* Remove the border */
+    color: #007bff; /* Set the text color */
+    text-decoration: underline; /* Add an underline style to make it look like a link */
+    cursor: pointer; /* Add a pointer cursor on hover to indicate interactivity */
+    padding: 0; /* Remove padding to make it compact */
+    font-size: inherit; /* Inherit the font size from the parent */
+  }
+
+  .login-button {
+    background-color: #007bff; /* Set background color */
+    color: #fff; /* Set text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add rounded corners */
+    padding: 10px 20px; /* Add padding to the button */
+    cursor: pointer; /* Add pointer cursor on hover */
+    width: 100%; /* Make the button span the width */
+    text-align: center; /* Center text horizontally within the button */
+    margin-top: 10px; /* Add spacing between the input group and the button */
+    margin-bottom: 10px;
+  }
+  
+  .login-button:hover {
+    background-color: #0056b3; /* Change background color on hover */
+  }
+
+  #form-box {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #D8D7D6;
+    border-radius: 20px;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column; /* Place label above input */
+    margin-bottom: 10px; /* Add spacing between input groups */
+  }
+  
+  .input-group label {
+    margin-bottom: 5px; /* Add spacing between label and input */
+  }
+  
+  .input-group input {
+    padding: 5px; /* Add padding to input fields */
+    border: 1px solid #ccc; /* Add a border to input fields */
+    border-radius: 3px; /* Add rounded corners to input fields */
+    width: 100%; /* Make input fields span the width of their container */
+  }

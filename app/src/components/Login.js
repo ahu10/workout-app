@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
+import '../styles/Login.css';
 
 export default function Login({ setToken }) {
   const navigate = useNavigate()
@@ -45,7 +46,7 @@ export default function Login({ setToken }) {
         // Pass the token to the parent component (App.js)
         setToken(token);
   
-        // Go back to root directory
+        // Go back to the root directory
         navigate("/");
       } else {
         setLogin({ username: "", password: "" });
@@ -59,28 +60,36 @@ export default function Login({ setToken }) {
   }
 
   return (
-    <div>
+    <div id="container">
+      <div id="form-box">
         <form className="Login" onSubmit={handleSubmit}>
-            <label>Email </label>
+          <div className="input-group">
+            <label>Email:</label>
             <input 
-                type="text"
-                name="username"
-                value={login.username}
-                required
-                onChange={handleChange} />
-            
-            <label>Password </label>
+              type="text"
+              name="username"
+              value={login.username}
+              required
+              onChange={handleChange} 
+            />
+          </div>
+          <div className="input-group">
+            <label>Password:</label>
             <input 
-                type="password"
-                name="password"
-                value={login.password}
-                required
-                onChange={handleChange} />
-            
-            <button type="submit" value="Submit">Submit</button>
+              type="password"
+              name="password"
+              value={login.password}
+              required
+              onChange={handleChange} 
+            />
+          </div>
+          <button class="login-button" type="submit" value="Submit">LOGIN</button>
         </form>
+        <div>
+          <input class="html-button" type="button" value="Create new account" onClick= {signup} />
+        </div>
+      </div>
     {user && <navigate to="/dashboard" state={user} replace={true} />}
-    <input type="button" value="Create new account" onClick= {signup} />
     </div>
   );
 }

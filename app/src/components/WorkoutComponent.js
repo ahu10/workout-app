@@ -9,6 +9,7 @@ export default function WorkoutComponent({ exerciseList, onSelectWorkout }) {
   const [workoutExercises, setWorkoutExercises] = useState({});
   const [selectedExerciseToAdd, setSelectedExerciseToAdd] = useState(null);
 
+  //Where the final workout is created based on the list of exerrcises chosen
   const createWorkout = () => {
     if (newWorkout.trim() === '') return;
 
@@ -23,11 +24,13 @@ export default function WorkoutComponent({ exerciseList, onSelectWorkout }) {
     setWorkoutExercises({ ...workoutExercises, [newWorkout]: newExerciseList });
   };
 
+  //Selecting the workout in the dropdown
   const selectWorkout = (workout) => {
     setSelectedWorkout(workout);
     onSelectWorkout(workout); // Notify the parent component of the selected workout
   };
 
+  //removing a workout from the list of available workouts
   const deleteWorkout = () => {
     if (!selectedWorkout) return;
 
@@ -41,13 +44,9 @@ export default function WorkoutComponent({ exerciseList, onSelectWorkout }) {
     }
   };
 
+  //Update exercise list with selected exercise
   const addExerciseToNewWorkout = (exercise) => {
     setNewExerciseList([...newExerciseList, exercise]);
-  };
-
-  const addExerciseToWorkout = (workoutName, exercise) => {
-    const updatedExercises = [...workoutExercises[workoutName], exercise];
-    setWorkoutExercises({ ...workoutExercises, [workoutName]: updatedExercises });
   };
 
   const removeExerciseFromList = (exerciseToRemove) => {
@@ -57,6 +56,31 @@ export default function WorkoutComponent({ exerciseList, onSelectWorkout }) {
 
   return (
     <div>
+      <h3>Add Exercises to New Workout</h3>
+      <ExerciseDropdown
+        exerciseList={exerciseList}
+        selectedExercise={selectedExerciseToAdd}
+        onSelectExercise={(exercise) => setSelectedExerciseToAdd(exercise)}
+      />
+      <button
+        onClick={() => {
+          if (selectedExerciseToAdd) {
+            addExerciseToNewWorkout(selectedExerciseToAdd);
+            setSelectedExerciseToAdd(null); // Reset selected exercise
+          }
+        }}
+        disabled={!selectedExerciseToAdd} // Disable the button when no exercise is selected
+      >
+        Add
+      </button>
+      <ul>
+        {newExerciseList.map((exercise) => (
+          <li key={exercise._id}>
+            {exercise.name}
+            <button onClick={() => removeExerciseFromList(exercise)}>Remove</button>
+          </li>
+        ))}
+      </ul>
       <h3>Workouts</h3>
       <div>
         <input
@@ -95,31 +119,6 @@ export default function WorkoutComponent({ exerciseList, onSelectWorkout }) {
           </ul>
         </div>
       )}
-      <h3>Add Exercises to New Workout</h3>
-      <ExerciseDropdown
-        exerciseList={exerciseList}
-        selectedExercise={selectedExerciseToAdd}
-        onSelectExercise={(exercise) => setSelectedExerciseToAdd(exercise)}
-      />
-      <button
-        onClick={() => {
-          if (selectedExerciseToAdd) {
-            addExerciseToNewWorkout(selectedExerciseToAdd);
-            setSelectedExerciseToAdd(null); // Reset selected exercise
-          }
-        }}
-        disabled={!selectedExerciseToAdd} // Disable the button when no exercise is selected
-      >
-        Add
-      </button>
-      <ul>
-        {newExerciseList.map((exercise) => (
-          <li key={exercise._id}>
-            {exercise.name}
-            <button onClick={() => removeExerciseFromList(exercise)}>Remove</button>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
